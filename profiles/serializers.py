@@ -5,7 +5,7 @@ from django.contrib.auth import get_user_model
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model=Profile
-        # Add profile fields
+        fields=["banned"]
 
 class UserSerializer(serializers.ModelSerializer):
     profile=ProfileSerializer()
@@ -17,7 +17,7 @@ class UserSerializer(serializers.ModelSerializer):
     def update(self,instance,validated_data):
         profile=Profile.objects.get(user=instance)
         profile_data=validated_data.get("profile")
-        # Update profile fields
+        profile.banned=profile_data["banned"]
         profile.save()
 
         instance.username=validated_data["username"]

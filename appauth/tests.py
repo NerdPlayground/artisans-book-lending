@@ -40,8 +40,7 @@ class AppAuthTestCase(PocketTestCase):
             "email":"johndoe@gmail.com",
             "first_name":"John",
             "last_name":"Doe",
-            # add profile information
-            # profile:{"field":"value"}
+            "profile":{"banned":False}
         }
         response=self.client.post(reverse("rest_register"),{
             "username":details.get("username"),
@@ -49,7 +48,7 @@ class AppAuthTestCase(PocketTestCase):
             "password1":self.password,
             "password2":self.password,
         })
-        self.assertEqual(response.status_code,204)
+        self.assertEqual(response.status_code,201)
         self.assertEqual(len(mail.outbox),1)
         self.verify_user_email(details.get("username"))
 
@@ -62,7 +61,7 @@ class AppAuthTestCase(PocketTestCase):
         self.assertEqual(profile.user.email,details.get("email"))
         self.assertEqual(profile.user.first_name,details.get("first_name"))
         self.assertEqual(profile.user.last_name,details.get("last_name"))
-        # check profile information
+        self.assertEqual(profile.banned,details.get("profile").get("banned"))
     
     def test_member_delete_account(self):
         token=self.member_login(self.dummy)

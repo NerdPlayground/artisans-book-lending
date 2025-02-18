@@ -7,6 +7,4 @@ class Profile(models.Model):
         primary_key=True,
         on_delete=models.CASCADE,
     )
-
-    # Django's built-in user model is retained for authentication 
-    # add extra fields here and ensure they are either nullable or with defaults
+    banned=models.BooleanField(default=False)

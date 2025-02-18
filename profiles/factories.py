@@ -25,4 +25,4 @@ class ProfileFactory(factory.django.DjangoModelFactory):
         model=Profile
 
     user=factory.SubFactory(UserFactory)
-    # Add the profile fields here
+    banned=factory.Faker("boolean",chance_of_getting_true=0)
