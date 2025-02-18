@@ -4,6 +4,7 @@ from .models import BorrowingRecord
 class BorrowingRecordAdmin(admin.ModelAdmin):
     list_display=[
         "id","book","user",
+        "borrowed_on","due_on",
     ]
     search_fields=[
         "book","user",

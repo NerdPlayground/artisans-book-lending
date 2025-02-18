@@ -18,6 +18,11 @@ class BorrowingRecord(models.Model):
         related_name="borrowing_records",
         on_delete=models.CASCADE,
     )
+    due_on=models.DateTimeField()
+    borrowed_on=models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering=["-borrowed_on"]
 
     def __str__(self):
         return f"{self.user} borrowed {self.book}"

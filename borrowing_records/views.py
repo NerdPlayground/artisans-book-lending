@@ -1,3 +1,5 @@
+from datetime import timedelta
+from django.utils import timezone
 from appauth.permissions import isOwner
 from rest_framework import generics,permissions
 from .models import BorrowingRecord
@@ -7,6 +9,9 @@ class BorrowBook(generics.CreateAPIView):
     queryset=BorrowingRecord.objects.all()
     serializer_class=BorrowingRecordSerializer
     permission_classes=[permissions.IsAuthenticated]
+
+    def perform_create(self, serializer):
+        return serializer.save(due_on=timezone.now()+timedelta(weeks=2))
 
     def post(self, request, *args, **kwargs):
         """Allows an authenticated user to borrow a book"""

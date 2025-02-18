@@ -10,7 +10,10 @@ class BorrowingRecordSerializer(serializers.ModelSerializer):
 
     class Meta:
         model=BorrowingRecord
-        fields=["id","book","user"]
+        fields=[
+            "id","book","user",
+            "borrowed_on","due_on",
+        ]
     
     def create(self, validated_data):
         book_id=validated_data.get("book")
