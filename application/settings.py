@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'appauth',
     'profiles',
     'pocket',
+    'books',
 ]
 
 MIDDLEWARE = [

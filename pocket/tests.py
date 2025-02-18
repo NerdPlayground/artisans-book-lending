@@ -1,6 +1,7 @@
 from django.urls import reverse
 from django.test import TestCase
 from profiles.factories import ProfileFactory
+from books.factories import BookFactory
 
 class PocketTestCase(TestCase):
     @classmethod
@@ -8,6 +9,8 @@ class PocketTestCase(TestCase):
         cls.password="A!q2L#w4S$o6K&p8"
         cls.admin=ProfileFactory.create(user__is_staff=True)
         cls.member,cls.intruder,cls.dummy=ProfileFactory.create_batch(3)
+
+        cls.books=BookFactory.create_batch(20)
 
     def member_login(self,member,password=None):
         password=password or self.password
