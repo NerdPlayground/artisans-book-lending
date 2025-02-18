@@ -52,4 +52,5 @@ urlpatterns = [
     path(f"{URL_HEADER}/registration/",include("dj_rest_auth.registration.urls")),
     # apps endpoints
     path(f"{URL_HEADER}/users/",include("profiles.urls")),
+    path(f"{URL_HEADER}/books/",include("books.urls")),
 ]
