@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'profiles',
     'pocket',
     'books',
+    'borrowing_records',
 ]
 
 MIDDLEWARE = [
