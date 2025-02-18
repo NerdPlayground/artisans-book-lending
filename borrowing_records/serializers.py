@@ -1,13 +1,8 @@
 from books.models import Book
 from .models import BorrowingRecord
 from rest_framework import serializers
-from books.serializers import BookSerializer
-from profiles.serializers import UserSerializer
 
 class BorrowingRecordSerializer(serializers.ModelSerializer):
-    user=UserSerializer()
-    book=BookSerializer()
-
     class Meta:
         model=BorrowingRecord
         fields=[
