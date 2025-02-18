@@ -9,6 +9,7 @@ class BorrowingRecordSerializer(serializers.ModelSerializer):
             "id","book","user",
             "borrowed_on","due_on",
         ]
+        read_only_fields=["user","due_on"]
     
     def create(self, validated_data):
         book_id=validated_data.get("book")
