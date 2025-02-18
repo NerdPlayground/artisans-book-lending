@@ -6,16 +6,18 @@ from .models import BorrowingRecord
 from .serializers import BorrowingRecordSerializer
 
 class BorrowBook(generics.CreateAPIView):
-    queryset=BorrowingRecord.objects.all()
     serializer_class=BorrowingRecordSerializer
     permission_classes=[permissions.IsAuthenticated]
-
-    def perform_create(self, serializer):
-        return serializer.save(due_on=timezone.now()+timedelta(weeks=2))
 
     def post(self, request, *args, **kwargs):
         """Allows an authenticated user to borrow a book"""
         return super().post(request, *args, **kwargs)
+
+    def perform_create(self, serializer):
+        return serializer.save(
+            user=self.request.user,
+            due_on=timezone.now()+timedelta(weeks=2)
+        )
 
 class BorrowedBooks(generics.ListAPIView):
     serializer_class=BorrowingRecordSerializer
