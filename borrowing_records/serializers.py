@@ -12,8 +12,7 @@ class BorrowingRecordSerializer(serializers.ModelSerializer):
         read_only_fields=["user","due_on"]
     
     def create(self, validated_data):
-        book_id=validated_data.get("book")
-        book=Book.objects.get(id=book_id)
+        book=validated_data.get("book")
         book.available=False
         book.save()
         return super().create(validated_data)
