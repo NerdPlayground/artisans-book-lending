@@ -53,4 +53,5 @@ urlpatterns = [
     # apps endpoints
     path(f"{URL_HEADER}/users/",include("profiles.urls")),
     path(f"{URL_HEADER}/books/",include("books.urls")),
+    path(f"{URL_HEADER}/borrowing_records/",include("borrowing_records.urls")),
 ]

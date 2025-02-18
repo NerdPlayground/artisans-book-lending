@@ -1,7 +1,11 @@
+from random import choice
+from datetime import timedelta
+from django.utils import timezone
 from django.urls import reverse
 from django.test import TestCase
 from profiles.factories import ProfileFactory
 from books.factories import BookFactory
+from borrowing_records.factories import BorrowingRecordsFactory
 
 class PocketTestCase(TestCase):
     @classmethod
@@ -11,6 +15,12 @@ class PocketTestCase(TestCase):
         cls.member,cls.intruder,cls.dummy=ProfileFactory.create_batch(3)
 
         cls.books=BookFactory.create_batch(20)
+        cls.borrowing_record=BorrowingRecordsFactory.create(
+            user=cls.member.user,book=cls.books[0],
+            due_on=timezone.now()+timedelta(weeks=2)
+        )
+        cls.books[0].available=False
+        cls.books[0].save()
 
     def member_login(self,member,password=None):
         password=password or self.password
