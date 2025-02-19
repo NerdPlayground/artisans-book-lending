@@ -217,11 +217,27 @@ ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 3
 VERSION = "1.0.0"
 
 SPECTACULAR_SETTINGS = {
-    "TITLE": "Django REST Template",
-    "DESCRIPTION": "Welcome to your Swagger documentation",
+    "TITLE": "BOOK LENDING API",
+    "DESCRIPTION": "<p>An interface for a library that handles \
+        book lending to the library users \
+        <h2>Let's Get Started</h2>\
+        <ol>\
+        <li>Register your account with an official email</li>\
+        <li>Check your inbox to verify your email</li>\
+        <li>Login with your valid credentials</li>\
+        <li>In the authorize tab, submit the token supplied after logging in</li>\
+        </ol>\
+        <p>Once you are finished, logout from the Logout endpoint to invalidate the token,\
+        then logout from the Authorize tab to discard the token from the swagger ui.<br/>\
+        Simply logging out from the Authorize tab doesn't invalidate the token and it can\
+        still be used to access your information</p>\
+        <p><strong>NOTE:</strong> Swagger doesn't persist authorization details on page reload.\
+        Therefore, save your token to resubmit it in case you accidentally reload the page.<br/>\
+        Also, when you are logging in, ensure the Authorization tab doesn't have an existing token. \
+        Otherwise, you'll get an invalid token error.</p>",
     "VERSION": VERSION,
     "CONTACT":{
-        "name": "Application Owner",
-        "email": "example@email.com",
+        "name": "George Mobisa",
+        "email": "georgemobisa23@outlook.com",
     },
 }
