@@ -31,7 +31,7 @@ SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = config('DEBUG',True,cast=bool)
 
-ALLOWED_HOSTS = ["artisans-book-lending.onrender.com"]
+ALLOWED_HOSTS = ["127.0.0.1","artisans-book-lending.onrender.com"]
 
 CSRF_TRUSTED_ORIGINS = ["https://artisans-book-lending.onrender.com"]
 
